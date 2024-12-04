@@ -1,12 +1,10 @@
-import './App.css'
+import Sidebar from "./components/Dashboard/sidebar";
+const App = () => {
+    return (
+        <>
+          <Sidebar /> 
+        </>
+    );
+};
 
-function App() {
-
-  return (
-    <>
-      <h1>React App</h1>
-    </>
-  )
-}
-
-export default App
+export default App;
