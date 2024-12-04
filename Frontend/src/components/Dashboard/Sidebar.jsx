@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { User, Package, BarChart2, FileText, MessageSquare, Settings, LogOut } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { User, Package, BarChart2, FileText, MessageSquare, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react'
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -13,39 +14,79 @@ function Sidebar() {
     { icon: Settings, label: 'Settings' }
   ]
 
+  const sidebarVariants = {
+    expanded: { width: '16rem' },
+    collapsed: { width: '5rem' }
+  }
+
+  const chevronVariants = {
+    expanded: { rotate: 0 },
+    collapsed: { rotate: 180 }
+  }
+
   return (
-    <aside className={`h-screen bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-r border-border flex flex-col justify-between p-4 transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`}>
-      <div className="flex flex-col gap-4">
-        <button 
+    <motion.aside
+      initial="expanded"
+      animate={isCollapsed ? "collapsed" : "expanded"}
+      variants={sidebarVariants}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="h-screen bg-gradient-to-b from-background/95 to-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-r border-border flex flex-col justify-between py-6 px-4 overflow-hidden"
+    >
+      <div className="flex flex-col gap-8">
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setIsCollapsed(!isCollapsed)} 
-          className="p-2 hover:bg-accent rounded-lg self-end"
+          className="p-2 hover:bg-accent rounded-full self-end transition-colors duration-200 ease-in-out"
         >
-          <div className="w-6 h-5 flex flex-col justify-between">
-            <span className="h-0.5 w-full bg-foreground rounded-full" />
-            <span className="h-0.5 w-full bg-foreground rounded-full" />
-            <span className="h-0.5 w-full bg-foreground rounded-full" />
-          </div>
-        </button>
+          <motion.div
+            variants={chevronVariants}
+            transition={{ duration: 0.3 }}
+          >
+            {isCollapsed ? <ChevronRight className="w-6 h-6 text-foreground" /> : <ChevronLeft className="w-6 h-6 text-foreground" />}
+          </motion.div>
+        </motion.button>
         
         <nav className="flex flex-col gap-2">
           {menuItems.map((item, index) => (
-            <button
+            <motion.button
               key={index}
-              className="flex items-center gap-4 p-2 hover:bg-accent rounded-lg text-foreground/60 hover:text-foreground transition-colors"
+              whileHover={{ scale: 1.05, x: 5 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-4 p-3 hover:bg-accent rounded-lg text-foreground/60 hover:text-foreground transition-all duration-200 ease-in-out group"
             >
-              <item.icon className="w-5 h-5" />
-              {!isCollapsed && <span>{item.label}</span>}
-            </button>
+              <item.icon className="w-6 h-6 transition-colors duration-200 ease-in-out group-hover:text-primary" />
+              <motion.span
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isCollapsed ? 0 : 1 }}
+                transition={{ duration: 0.2 }}
+                className="whitespace-nowrap overflow-hidden"
+              >
+                {item.label}
+              </motion.span>
+            </motion.button>
           ))}
         </nav>
       </div>
 
-      <button className="flex items-center gap-4 p-2 hover:bg-accent rounded-lg text-foreground/60 hover:text-foreground transition-colors">
-        <LogOut className="w-5 h-5" />
-        {!isCollapsed && <span>Logout</span>}
-      </button>
-    </aside>
+      <motion.button
+        whileHover={{ scale: 1.05, x: 5 }}
+        whileTap={{ scale: 0.95 }}
+        className="flex items-center gap-4 p-3 hover:bg-accent rounded-lg text-foreground/60 hover:text-foreground transition-all duration-200 ease-in-out group mt-auto"
+      >
+        <LogOut className="w-6 h-6 transition-colors duration-200 ease-in-out group-hover:text-primary" />
+        <motion.span
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isCollapsed ? 0 : 1 }}
+          transition={{ duration: 0.2 }}
+          className="whitespace-nowrap overflow-hidden"
+        >
+          Logout
+        </motion.span>
+      </motion.button>
+    </motion.aside>
   )
 }
 
-export default Sidebar;
+export default Sidebar
+
