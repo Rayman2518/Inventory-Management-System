@@ -1,14 +1,26 @@
-import Sidebar from "./components/Dashboard/sidebar";
-import WeatherDashboard from "./components/Dashboard/Weather-dashboard";
-import "./styles/weather-animations.css";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from './Pages/Dashboard';
 
-const App = () => {
+function App() {
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar />
-      <WeatherDashboard />
-    </div>
+    <Router>
+      <Routes>
+        {/* Redirect from root to dashboard */}
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        
+        {/* Dashboard route */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        
+        {/* Add more routes as needed */}
+        {/* <Route path="/users" element={<Users />} /> */}
+        {/* <Route path="/inventory" element={<Inventory />} /> */}
+        
+        {/* 404 route - should be last */}
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
+
