@@ -8,7 +8,7 @@ function Sidebar() {
   const navigate = useNavigate()
 
   const menuItems = [
-    { icon: User, label: 'Profile', path: '/users/allUsers' },
+    { icon: User, label: 'Profile', path: '/users' },
     { icon: Package, label: 'Inventory', path: '/inventory' },
     { icon: BarChart2, label: 'Analytics', path: '/analytics' },
     { icon: FileText, label: 'Reports', path: '/reports' },
