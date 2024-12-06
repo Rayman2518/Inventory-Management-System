@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import UserManagement from './Pages/User-Management';
+import ShowUsers from './Pages/Show-Users'
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         
         {/* Users route */}
-        <Route path="/users" element={<UserManagement />} />
+        <Route path="/users" element={<ShowUsers />} />
+        <Route path="/users/add" element={<UserManagement />} />
         
         {/* Add more routes as needed */}
         {/* <Route path="/users" element={<Users />} /> */}
