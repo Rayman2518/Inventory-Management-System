@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react'
 import { User, Package, BarChart2, FileText, MessageSquare, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [activeItem, setActiveItem] = useState(null)
+  const navigate = useNavigate()
 
   const menuItems = [
-    { icon: User, label: 'Profile' },
-    { icon: Package, label: 'Inventory' },
-    { icon: BarChart2, label: 'Analytics' },
-    { icon: FileText, label: 'Reports' },
-    { icon: MessageSquare, label: 'Messages' },
-    { icon: Settings, label: 'Settings' }
+    { icon: User, label: 'Profile', path: '/users/allUsers' },
+    { icon: Package, label: 'Inventory', path: '/inventory' },
+    { icon: BarChart2, label: 'Analytics', path: '/analytics' },
+    { icon: FileText, label: 'Reports', path: '/reports' },
+    { icon: MessageSquare, label: 'Messages', path: '/messages' },
+    { icon: Settings, label: 'Settings', path: '/settings' }
   ]
 
   useEffect(() => {
@@ -24,6 +26,11 @@ function Sidebar() {
     handleResize()
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const handleNavigation = (path, index) => {
+    setActiveItem(index)
+    navigate(path)
+  }
 
   return (
     <aside 
@@ -48,7 +55,7 @@ function Sidebar() {
               className={`flex items-center gap-4 p-3 rounded-lg text-foreground/60 hover:text-foreground transition-all duration-200 ease-in-out ${
                 activeItem === index ? 'bg-accent text-foreground' : 'hover:bg-accent/50'
               } ${isCollapsed ? 'justify-center' : ''}`}
-              onClick={() => setActiveItem(index)}
+              onClick={() => handleNavigation(item.path, index)}
             >
               <item.icon className={`w-6 h-6 transition-all duration-200 ${
                 activeItem === index ? 'text-primary' : ''
@@ -76,5 +83,6 @@ function Sidebar() {
     </aside>
   )
 }
-export default Sidebar;
+
+export default Sidebar
 
