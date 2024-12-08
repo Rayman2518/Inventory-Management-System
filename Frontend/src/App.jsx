@@ -14,6 +14,7 @@ import InventoryLogsPage from "./pages/logs/Inventory-logsPage";
 import SystemLogsPage from "./pages/logs/System-logsPage";
 import AnalyticsPage from "./Pages/Analytics Page/AnalyticsPage";
 import Reports from "./Pages/Analytics Page/GenerateReportsPage";
+import Settings from "./Pages/SettingsPage";
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
         {/* Analytics route */}
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/analytics/reports" element={<Reports />} />
+
+        {/* Settings route */}
+        <Route path="/settings" element={<Settings />} />
+
 
         {/* 404 route - should be last */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
