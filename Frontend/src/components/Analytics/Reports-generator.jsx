@@ -59,6 +59,18 @@ export default function ReportsGenerator() {
 
   return (
     <div className="p-6 space-y-8">
+      <div className="mb-6">
+        <div className="flex items-center justify-between">
+          <h1 className="text-sm text-muted-foreground mb-2">Analytics / Generate Reports</h1>
+          <div className="flex items-center gap-4">
+            
+            <Button variant="outline" onClick={() => window.location.href='/analytics'}>Show Analytics</Button>
+            <Button>
+              Generate Reports
+            </Button>
+          </div>
+        </div>
+      </div>
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Generate Reports</h1>
         <div className="flex items-center gap-4">
