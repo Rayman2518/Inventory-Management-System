@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
-import { User, Package, BarChart2, FileText, MessageSquare, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react'
+import { User, Package, BarChart2, FileText, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [activeItem, setActiveItem] = useState(null)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const menuItems = [
-    { icon: User, label: 'Profile' },
-    { icon: Package, label: 'Inventory' },
-    { icon: BarChart2, label: 'Analytics' },
-    { icon: FileText, label: 'Reports' },
-    { icon: MessageSquare, label: 'Messages' },
-    { icon: Settings, label: 'Settings' }
+    { icon: User, label: 'Profile', path: '/users' },
+    { icon: Package, label: 'Inventory', path: '/inventory' },
+    { icon: BarChart2, label: 'Analytics', path: '/analytics' },
+    { icon: FileText, label: 'Logs', path: '/logs/inventory' },
+    { icon: Settings, label: 'Settings', path: '/settings' }
   ]
 
   useEffect(() => {
@@ -24,6 +25,10 @@ function Sidebar() {
     handleResize()
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const handleNavigation = (path) => {
+    navigate(path)
+  }
 
   return (
     <aside 
@@ -42,26 +47,29 @@ function Sidebar() {
         </button>
         
         <nav className="flex flex-col gap-2 px-4">
-          {menuItems.map((item, index) => (
-            <button
-              key={index}
-              className={`flex items-center gap-4 p-3 rounded-lg text-foreground/60 hover:text-foreground transition-all duration-200 ease-in-out ${
-                activeItem === index ? 'bg-accent text-foreground' : 'hover:bg-accent/50'
-              } ${isCollapsed ? 'justify-center' : ''}`}
-              onClick={() => setActiveItem(index)}
-            >
-              <item.icon className={`w-6 h-6 transition-all duration-200 ${
-                activeItem === index ? 'text-primary' : ''
-              }`} />
-              {!isCollapsed && (
-                <span className={`transition-all duration-200 ${
-                  activeItem === index ? 'font-semibold' : ''
-                }`}>
-                  {item.label}
-                </span>
-              )}
-            </button>
-          ))}
+          {menuItems.map((item, index) => {
+            const isActive = location.pathname.startsWith(item.path)
+            return (
+              <button
+                key={index}
+                className={`flex items-center gap-4 p-3 rounded-lg text-foreground/60 hover:text-foreground transition-all duration-200 ease-in-out ${
+                  isActive ? 'bg-accent text-foreground' : 'hover:bg-accent/50'
+                } ${isCollapsed ? 'justify-center' : ''}`}
+                onClick={() => handleNavigation(item.path)}
+              >
+                <item.icon className={`w-6 h-6 transition-all duration-200 ${
+                  isActive ? 'text-primary' : ''
+                }`} />
+                {!isCollapsed && (
+                  <span className={`transition-all duration-200 ${
+                    isActive ? 'font-semibold' : ''
+                  }`}>
+                    {item.label}
+                  </span>
+                )}
+              </button>
+            )
+          })}
         </nav>
       </div>
 
@@ -76,5 +84,6 @@ function Sidebar() {
     </aside>
   )
 }
-export default Sidebar;
+
+export default Sidebar
 
