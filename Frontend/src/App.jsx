@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from './Pages/Dashboard';
-import UserManagement from './Pages/User-Management';
-import ShowUsers from './Pages/Show-Users'
-
+import DashboardPage from './Pages/DashboardPage';
+import UserManagementPage from './Pages/User-ManagementPage';
+import ShowUsersPage from './Pages/Show-UsersPage'
+import AddInventoryPage from './Pages/Add-InventoryPage';
+import AddLocationPage from './Pages/add-locationPage'
+import ShowInventoryPage from './Pages/Show-InventoryPage'
 function App() {
   return (
     <Router>
@@ -11,15 +13,17 @@ function App() {
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         
         {/* Dashboard route */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         
         {/* Users route */}
-        <Route path="/users" element={<ShowUsers />} />
-        <Route path="/users/add" element={<UserManagement />} />
+        <Route path="/users" element={<ShowUsersPage />} />
+        <Route path="/users/add" element={<UserManagementPage />} />
         
-        {/* Add more routes as needed */}
-        {/* <Route path="/users" element={<Users />} /> */}
-        {/* <Route path="/inventory" element={<Inventory />} /> */}
+        {/* Inentory Management Route */}
+        <Route path="/inventory" element={<ShowInventoryPage />} />
+        <Route path="/inventory/add" element={<AddInventoryPage />} />
+        <Route path="/inventory/location/add" element={<AddLocationPage />} />
+
         
         {/* 404 route - should be last */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
