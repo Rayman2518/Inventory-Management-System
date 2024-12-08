@@ -1,5 +1,5 @@
-import Sidebar from '../components/Dashboard/Sidebar'
-import AddLocation from '../components/Inventory-Management/Add-Location'
+import Sidebar from '@/components/Dashboard/Sidebar'
+import AddLocation from '@/components/Inventory-Management/Add-location'
 
 export default function AddLocationPage() {
   return (

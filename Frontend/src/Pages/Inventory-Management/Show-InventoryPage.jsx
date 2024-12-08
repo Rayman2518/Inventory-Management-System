@@ -1,5 +1,5 @@
-import Sidebar from '../components/Dashboard/Sidebar'
-import ShowInventory from '../components/Inventory-Management/Show-Inventory'
+import Sidebar from '../../components/Dashboard/Sidebar'
+import ShowInventory from '../../components/Inventory-Management/Show-Inventory'
 
 export default function InventoryPage() {
   return (
