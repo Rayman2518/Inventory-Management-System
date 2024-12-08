@@ -11,7 +11,7 @@ function Sidebar() {
     { icon: User, label: 'Profile', path: '/users' },
     { icon: Package, label: 'Inventory', path: '/inventory' },
     { icon: BarChart2, label: 'Analytics', path: '/analytics' },
-    { icon: FileText, label: 'Logs', path: '/logs' },
+    { icon: FileText, label: 'Logs', path: '/logs/inventory' },
     { icon: MessageSquare, label: 'Messages', path: '/messages' },
     { icon: Settings, label: 'Settings', path: '/settings' }
   ]
