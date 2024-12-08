@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { User, Package, BarChart2, FileText, MessageSquare, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react'
+import { User, Package, BarChart2, FileText, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 function Sidebar() {
@@ -12,7 +12,6 @@ function Sidebar() {
     { icon: Package, label: 'Inventory', path: '/inventory' },
     { icon: BarChart2, label: 'Analytics', path: '/analytics' },
     { icon: FileText, label: 'Logs', path: '/logs/inventory' },
-    { icon: MessageSquare, label: 'Messages', path: '/messages' },
     { icon: Settings, label: 'Settings', path: '/settings' }
   ]
 
