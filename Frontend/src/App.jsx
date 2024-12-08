@@ -5,13 +5,15 @@ import {
   Navigate,
 } from "react-router-dom";
 import DashboardPage from "./Pages/DashboardPage";
-import UserManagementPage from "./Pages/User-ManagementPage";
-import ShowUsersPage from "./Pages/Show-UsersPage";
-import AddInventoryPage from "./Pages/Add-InventoryPage";
-import AddLocationPage from "./Pages/add-locationPage";
-import ShowInventoryPage from "./Pages/Show-InventoryPage";
+import UserManagementPage from "./Pages/User-Management/User-ManagementPage";
+import ShowUsersPage from "./Pages/User-Management/Show-UsersPage";
+import AddInventoryPage from "./Pages/Inventory-Management/Add-InventoryPage";
+import AddLocationPage from "./Pages/Inventory-Management/Add-locationPage";
+import ShowInventoryPage from "./Pages/Inventory-Management/Show-InventoryPage";
 import InventoryLogsPage from "./pages/logs/Inventory-logsPage";
 import SystemLogsPage from "./pages/logs/System-logsPage";
+import AnalyticsPage from './Pages/AnalyticsPage'
+
 function App() {
   return (
     <Router>
@@ -34,6 +36,9 @@ function App() {
         {/* Logs routes */}
         <Route path="/logs/inventory" element={<InventoryLogsPage />} />
         <Route path="/logs/system" element={<SystemLogsPage />} />
+
+        {/* Analytics route */}
+        <Route path="/analytics" element={<AnalyticsPage />} />
 
         {/* 404 route - should be last */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
