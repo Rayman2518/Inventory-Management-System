@@ -37,7 +37,7 @@ export default function WeatherDashboard() {
   const getWeatherBackground = () => {
     if (!weather) return 'clouds'
     const condition = weather.weather[0].main.toLowerCase();
-    console.log('Weather Background URL:', `/weather-backgrounds/${condition}.jpg`);
+    // console.log('Weather Background URL:', `/weather-backgrounds/${condition}.jpg`);
     return condition
   }
 

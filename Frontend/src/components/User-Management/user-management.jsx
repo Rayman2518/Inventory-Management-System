@@ -16,13 +16,13 @@ export default function UserManagement() {
           <h1 className="text-2xl font-semibold">Add new User</h1>
           {/* Add Buttons  */}
           <div className="flex gap-2  ">
-            <Button>Add User</Button>
             <Button
               variant="outline"
               onClick={() => (window.location.href = "/users")}
             >
-              all users
+              All Users
             </Button>
+            <Button>Add User</Button>
           </div>
         </div>
       </div>

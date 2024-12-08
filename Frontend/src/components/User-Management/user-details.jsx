@@ -66,7 +66,7 @@ export default function UserDetails() {
             </span>
             {/* Add Buttons  */}
             <div className="flex gap-2  ">
-              <Button>all users</Button>
+              <Button>All Users</Button>
               <Button
                 variant="outline"
                 onClick={() => (window.location.href = "/users/add")}
