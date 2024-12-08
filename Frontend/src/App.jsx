@@ -12,7 +12,7 @@ import AddLocationPage from "./Pages/Inventory-Management/Add-locationPage";
 import ShowInventoryPage from "./Pages/Inventory-Management/Show-InventoryPage";
 import InventoryLogsPage from "./pages/logs/Inventory-logsPage";
 import SystemLogsPage from "./pages/logs/System-logsPage";
-import AnalyticsPage from './Pages/AnalyticsPage'
+import AnalyticsPage from "./Pages/AnalyticsPage";
 
 function App() {
   return (
